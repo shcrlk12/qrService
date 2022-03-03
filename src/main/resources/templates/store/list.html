@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <style>
+        #menuList{
+            display: grid;
+            grid-template-rows: repeat(3, 200px);
+            grid-template-columns: repeat(3, 200px);
+        }
+        #menuList > *{
+            border: solid 1px black;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+<div>
+    <a href = "/store/menu-add">물품 추가</a>
+    <a href = "/store/category-add">카테고리 추가</a>
+</div>
+<div id="category" th:utext="${categoryList}"></div>
+<div th:if="${category} == ''">
+    <div id="menuList">
+        <div th:each="menuDtos : ${menuDtoss}">
+            <div th:each="menuDto : ${menuDtos}">
+                <div th:text="${menuDto.category} +${menuDto.menuName} + ${menuDto.price}"></div>
+                <img th:src = "${menuDto.fileLocalUrl}" alt = "" style="width: 100%; height: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+<div th:if="${category} != ''">
+    <div id="menuList2">
+        <div th:each="menuDto : ${menuDtoss}">
+            <div th:text="${menuDto.category} +${menuDto.menuName} + ${menuDto.price}"></div>
+            <img th:src = "${menuDto.fileLocalUrl}" alt = "" style="width: 100%; height: 100%">
+        </div>
+    </div>
+</div>
+</body>
+</html>

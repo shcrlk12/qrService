@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+<form method = "post" enctype="multipart/form-data">
+
+    <table>
+        <tr>
+            <th>카테고리</th>
+            <td>
+                <select name = "category" id = "category" required>
+                    <div th:each="x : ${categories}">
+                        <option th:value = "${x.categoryName}" th:text="${x.categoryName}"></option>
+                    </div>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>매뉴 이름</th>
+            <td>
+                <input type = "text" name = "menuName" required>
+            </td>
+        </tr>
+        <tr>
+            <th>판매 금액</th>
+            <td>
+                <input type = "number" name = "price" required>
+            </td>
+        </tr>
+        <tr>
+            <th>할인 여부</th>
+            <td>
+                <input type = "checkbox" name = "isDiscount">
+            </td>
+        </tr>
+        <tr>
+            <th>할인 금액</th>
+            <td>
+                <input type = "number" name = "discountPrice">
+            </td>
+        </tr>
+        <tr>
+            <th>대표 이미지</th>
+            <td>
+                <input type="file" name="file" accept="image/png, image/jpeg" />
+            </td>
+        </tr>
+        <tr>
+            <th>라벨 사용 여부</th>
+            <td>
+                <input type = "checkbox" name = "isLabel">
+            </td>
+        </tr>
+        <tr>
+            <th>라벨</th>
+            <td>
+                <input type = "text" name = "labelName">
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <button type="submit">제출</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+<div th:each="x : ${categories}">
+    <div th:text="${x.categoryName}"></div>
+</div>
+<form method = "post">
+
+    <table>
+        <tr>
+            <th>카테고리</th>
+            <td>
+                <input type = "text" name="categoryName">
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <button type="submit">카테고리 추가</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
